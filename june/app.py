@@ -78,7 +78,6 @@ def register_static(app):
 
 
 def register_jinja(app):
-    from .markdown import plain_markdown
     from .htmlcompress import HTMLCompress
     from .views.admin import load_sidebar
     from werkzeug.datastructures import ImmutableDict
@@ -88,8 +87,6 @@ def register_jinja(app):
             'jinja2.ext.autoescape', 'jinja2.ext.with_', HTMLCompress
         ]
     )
-
-    app.jinja_env.filters['markdown'] = plain_markdown
 
     @app.context_processor
     def register_context():
